@@ -13,15 +13,27 @@ const sql = neon("postgresql://neondb_owner:xvg0AHkSE7ws@ep-sweet-lab-a54gj8lo.u
 export const db = drizzle({ client: sql });
 
 export async function getAllToppings() {
-    return await db.select().from(toppingsTable);
+    try {
+        return await db.select().from(toppingsTable);
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function updateTopping(oldToppingName, newToppingName) {
-    return await db.update(toppingsTable).set({topping: newToppingName}).where(eq(toppingsTable.topping, oldToppingName));
+    try {
+        return await db.update(toppingsTable).set({topping: newToppingName}).where(eq(toppingsTable.topping, oldToppingName));
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function addTopping(toppingName) {
-    return await db.insert(toppingsTable).values({topping: toppingName});
+    try {
+        return await db.insert(toppingsTable).values({topping: toppingName});
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function deleteTopping(key) {
