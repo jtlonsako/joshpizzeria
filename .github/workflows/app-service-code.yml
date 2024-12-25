@@ -24,20 +24,22 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: yarn install and build
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm run build
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Create standalone directory
-        run: mkdir -p ./.next/standalone/public
+      - name: Build Next.js App
+        run: pnpm run build
 
-      - name: Copy static files
+      - name: Export Standalone Build
+        run: pnpm run build --standalone
+
+      - name: Prepare Standalone Directory
         run: |
+          mkdir -p ./.next/standalone/public
           cp -R ./public ./.next/standalone/public
           cp -R ./.next/static ./.next/standalone/.next/static
 
-      - name: Upload artifact for deployment job
+      - name: Upload Artifact for Deployment
         uses: actions/upload-artifact@v4
         with:
           name: app
@@ -49,13 +51,13 @@ jobs:
 
     environment:
       name: production
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
+      - name: Download Artifact from Build Job
         uses: actions/download-artifact@v4
         with:
           name: app
+          path: ./app
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
@@ -64,4 +66,4 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: "Production"
           publish-profile: ${{ secrets.PUBLISH_PROFILE }}
-          package: .
+          package: ./app
