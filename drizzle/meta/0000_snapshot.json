@@ -1,0 +1,134 @@
+{
+  "id": "6f90fbb1-aab7-47d9-acd3-5f0cfeccc008",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.pizzas": {
+      "name": "pizzas",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "pizzas_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.pizzaTables": {
+      "name": "pizzaTables",
+      "schema": "",
+      "columns": {
+        "topping": {
+          "name": "topping",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pizzaId": {
+          "name": "pizzaId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pizzaTables_topping_toppings_topping_fk": {
+          "name": "pizzaTables_topping_toppings_topping_fk",
+          "tableFrom": "pizzaTables",
+          "tableTo": "toppings",
+          "columnsFrom": [
+            "topping"
+          ],
+          "columnsTo": [
+            "topping"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "pizzaTables_pizzaId_pizzas_id_fk": {
+          "name": "pizzaTables_pizzaId_pizzas_id_fk",
+          "tableFrom": "pizzaTables",
+          "tableTo": "pizzas",
+          "columnsFrom": [
+            "pizzaId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.toppings": {
+      "name": "toppings",
+      "schema": "",
+      "columns": {
+        "topping": {
+          "name": "topping",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "toppings_topping_unique": {
+          "name": "toppings_topping_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "topping"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
