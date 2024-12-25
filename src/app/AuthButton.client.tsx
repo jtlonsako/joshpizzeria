@@ -11,20 +11,22 @@ export default function AuthButton() {
       await naSignOut({ redirect: false });
       await naSignIn();
     } catch (err) {
-      console.error("Error signing out: " + err.message);
+      if (err instanceof Error) {
+        console.error("Error signing out: " + err.message);
+      }
     }
   }
 
-  // Handle sign in
   async function handleSignIn() {
     try {
       await naSignIn();
     } catch (err) {
-      console.error("Error signing in: " + err.message);
+      if (err instanceof Error) {
+        console.error("Error signing in: " + err.message);
+      }
     }
   }
 
-  // While session is loading
   if (status === "loading") {
     return (
       <Button disabled className="w-60">

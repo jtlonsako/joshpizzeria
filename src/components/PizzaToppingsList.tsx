@@ -112,7 +112,7 @@ export default function PizzaToppingList({ pizzaInfo }: {pizzaInfo: {name: strin
     );
 }
 
-function PizzaToppingRow({ pizzaId, topping, onDelete }) {
+function PizzaToppingRow({ topping, onDelete }) {
     const [error, setError] = useState("");
 
     const handleDelete = async () => {
@@ -141,7 +141,7 @@ function PizzaToppingRow({ pizzaId, topping, onDelete }) {
     );
 }
 
-function AddPizzaToppingRow({ pizzaId, availableToppings, onAdd }) {
+function AddPizzaToppingRow({ availableToppings, onAdd }) {
     const [rowState, setRowState] = useState("view");
     const [selectedTopping, setSelectedTopping] = useState("");
     const [error, setError] = useState("");

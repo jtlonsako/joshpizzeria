@@ -3,7 +3,7 @@
 import CreatePizza from "@/components/CreatePizza";
 import PizzaButton from "@/components/PizzaButton";
 import { getAllPizzas } from "@/db/queries";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PizzaManagement() {
     const [pizzaList, setPizzaList] = useState([{id: 0, name: ''}]);
@@ -62,7 +62,7 @@ export default function PizzaManagement() {
                     <CreatePizza addPizzaToList={addPizzaToList} />
                 </div>
             )}
-            
+
             <style jsx>{`
                 .loader {
                     border: 8px solid #f3f3f3; /* Light gray */
