@@ -29,6 +29,9 @@ jobs:
           pnpm install
           pnpm run build
 
+      - name: Create standalone directory
+        run: mkdir -p ./.next/standalone/public
+
       - name: Copy static files
         run: |
           cp -R ./public ./.next/standalone/public
