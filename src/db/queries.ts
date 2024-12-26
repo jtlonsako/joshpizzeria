@@ -37,7 +37,11 @@ export async function addTopping(toppingName) {
 }
 
 export async function deleteTopping(key) {
-    return await db.delete(toppingsTable).where(eq(toppingsTable.topping, key));
+    try {
+        return await db.delete(toppingsTable).where(eq(toppingsTable.topping, key));
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function getAllPizzas() {
