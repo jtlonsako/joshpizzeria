@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-screen h-screen grid md:grid-cols-2 place-content-center">
+    <div className="w-screen h-screen grid md:grid-cols-2 place-content-center gap-4">
       <Link
         href="toppings"
         className={`p-5 mx-5 border-2 border-black rounded-lg ${

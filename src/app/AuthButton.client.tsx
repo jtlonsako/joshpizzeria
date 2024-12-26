@@ -36,11 +36,11 @@ export default function AuthButton() {
   }
 
   return session?.user ? (
-    <Button className="w-60" onClick={handleSignOut}>
+    <Button className="w-24 md:w-60" onClick={handleSignOut}>
       {session.user.name} : Sign Out
     </Button>
   ) : (
-    <Button className="w-60" onClick={handleSignIn}>
+    <Button className="w-24 md:w-60" onClick={handleSignIn}>
       Sign In
     </Button>
   );
