@@ -45,7 +45,11 @@ export async function deleteTopping(key) {
 }
 
 export async function getAllPizzas() {
-    return await db.select().from(pizzaTable);
+    try {
+        return await db.select().from(pizzaTable);
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function createPizza(pizzaName) {
@@ -65,21 +69,33 @@ export async function deletePizza(pizzaId) {
 }
 
 export async function getPizzaToppingsByPizzaId(pizzaId) {
-    return await db.select().from(pizzaToppings).where(eq(pizzaToppings.pizzaId, pizzaId));
+    try {
+        return await db.select().from(pizzaToppings).where(eq(pizzaToppings.pizzaId, pizzaId));
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function updatePizzaName(pizzaId, pizzaName) {
     try {
         return await db.update(pizzaTable).set({name: pizzaName}).where(eq(pizzaTable.id, pizzaId));
     } catch (error) {
-        throw error
+        throw error;
     }
 }
 
 export async function addPizzaTopping(pizzaId, topping) {
-    return await db.insert(pizzaToppings).values({pizzaId: pizzaId, topping: topping})
+    try {
+        return await db.insert(pizzaToppings).values({pizzaId: pizzaId, topping: topping})
+    } catch (error) {
+        throw error;
+    }
 }
 
 export async function deletePizzaTopping(pizzaId, topping) {
-    return await db.delete(pizzaToppings).where(and(eq(pizzaToppings.pizzaId, pizzaId), eq(pizzaToppings.topping, topping)));
+    try {
+        return await db.delete(pizzaToppings).where(and(eq(pizzaToppings.pizzaId, pizzaId), eq(pizzaToppings.topping, topping)));
+    } catch (error) {
+        throw error;
+    }
 }
