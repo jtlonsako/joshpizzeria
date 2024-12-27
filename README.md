@@ -1,36 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Josh's Pizzeria
 
-## Getting Started
+This is a simple NextJS application that allows you to manage Pizza Toppings and Pizza Recipe's. The app has two users, named 'Owner' and 'Chef': the password for each user is 'pass'. 'Owner' has the ability to modify pizza toppings, and 'Chef' has the ability to modify pizza recipes.
 
-First, run the development server:
+To run the application, clone this github repo, run `npm install` or `pnpm install`, and run either `npm run dev` or build the application via `npm run build` and then `npm run start` after the build is complete.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technical Info
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+As stated earlier, this application uses NextJS as the frontend framework, and uses NeonDB+Drizzle for database management. For Authorization/Authentication, the app uses Auth.js with credentials injected directly into the app for simplicity. For styling, I've decided to use TailwindCSS, as that is the most comfortable styling framework for me.
