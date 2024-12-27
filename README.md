@@ -1,8 +1,16 @@
 # Josh's Pizzeria
 
-This is a simple NextJS application that allows you to manage Pizza Toppings and Pizza Recipe's. The app has two users, named 'Owner' and 'Chef': the password for each user is 'pass'. 'Owner' has the ability to modify pizza toppings, and 'Chef' has the ability to modify pizza recipes.
+This is a simple NextJS application that allows you to manage Pizza Toppings and Pizza Recipe's. The app is built using NextJS on the frontend and Neon+Drizzle for the backend.
 
-To run the application, clone this github repo, run `npm install` or `pnpm install`, and run either `npm run dev` or build the application via `npm run build` and then `npm run start` after the build is complete.
+## How To Use the App
+
+There are two accounts: **Owner** and **Chef**. Owner has access to manage toppings, and Chef has access to manage pizza recipes. To use the app:
+- Press the 'sign in' button on the top right.
+- Enter *owner* into username to access topping management, or *chef* to access pizza recipe management.
+- Enter *pass* into the password field.
+- Click the button that has now been enabled on the homepage to use the web app.
+
+To run the application locally, clone this github repo, run `npm install` or `pnpm install`, and run either `npm run dev` or build the application via `npm run build` and then `npm run start` after the build is complete.
 
 ## Technical Info
 
