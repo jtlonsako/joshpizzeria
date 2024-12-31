@@ -3,6 +3,7 @@ import { addTopping, deleteTopping, getAllToppings, updateTopping } from "@/db/q
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./ui/table";
 import { useState, useEffect } from "react";
 import { FaPenToSquare, FaPlus, FaTrashCan } from "react-icons/fa6";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function ToppingsTable() {
     const [toppings, setToppings] = useState(['']);
@@ -79,7 +80,7 @@ export default function ToppingsTable() {
             {error && <div className="mb-4 text-red-500">{error}</div>}
             {isLoading ? (
                 <div className="flex justify-center items-center">
-                    <div className="loader"></div>
+                    <LoadingSpinner />
                 </div>
             ) : (
                 <Table>
@@ -100,21 +101,6 @@ export default function ToppingsTable() {
                     </TableFooter>
                 </Table>
             )}
-            <style jsx>{`
-                .loader {
-                    border: 8px solid #f3f3f3; /* Light gray */
-                    border-top: 8px solid #3498db; /* Blue */
-                    border-radius: 50%;
-                    width: 60px;
-                    height: 60px;
-                    animation: spin 1s linear infinite;
-                }
-
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            `}</style>
         </div>
         
     );

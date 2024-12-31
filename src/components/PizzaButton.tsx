@@ -11,22 +11,22 @@ import { useState } from "react";
 import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function PizzaButton({pizzaInfo, updatePizzaNameDOM, removePizza}) {
-    const [isEditing, setIsEditing] = useState(false); // Tracks if the title is in edit mode
-    const [tempTitle, setTempTitle] = useState(pizzaInfo.name); // Temporary title for editing
+    const [isEditing, setIsEditing] = useState(false);
+    const [tempTitle, setTempTitle] = useState(pizzaInfo.name);
 
     const handleEditClick = () => {
         setTempTitle(pizzaInfo.name);
-        setIsEditing(true); // Enable edit mode
+        setIsEditing(true);
     };
 
     const handleCancelClick = () => {
-        setIsEditing(false); // Exit edit mode without saving
+        setIsEditing(false);
     };
 
     async function handleSaveClick() {
         try {
-            await updatePizzaName(pizzaInfo.id, tempTitle); // Update the title in the backend
-            updatePizzaNameDOM(pizzaInfo.id, tempTitle); // Call the parent's update function
+            await updatePizzaName(pizzaInfo.id, tempTitle);
+            updatePizzaNameDOM(pizzaInfo.id, tempTitle);
             setIsEditing(false);
         } catch (error) {
             console.error("Error updating pizza name:", error);

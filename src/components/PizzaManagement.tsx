@@ -4,6 +4,7 @@ import CreatePizza from "@/components/CreatePizza";
 import PizzaButton from "@/components/PizzaButton";
 import { getAllPizzas } from "@/db/queries";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function PizzaManagement() {
     const [pizzaList, setPizzaList] = useState([{id: 0, name: ''}]);
@@ -47,7 +48,7 @@ export default function PizzaManagement() {
             </div>
             {isLoading ? (
                 <div className="flex justify-center items-center mt-10">
-                    <div className="loader"></div>
+                    <LoadingSpinner />
                 </div>
             ) : (
                 <div className="grid grid-cols-3 gap-2">
@@ -62,22 +63,6 @@ export default function PizzaManagement() {
                     <CreatePizza addPizzaToList={addPizzaToList} />
                 </div>
             )}
-
-            <style jsx>{`
-                .loader {
-                    border: 8px solid #f3f3f3; /* Light gray */
-                    border-top: 8px solid #3498db; /* Blue */
-                    border-radius: 50%;
-                    width: 60px;
-                    height: 60px;
-                    animation: spin 1s linear infinite;
-                }
-
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            `}</style>
         </div>
     );
 }
